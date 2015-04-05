@@ -1,8 +1,8 @@
 {
   "name": "shorten-service",
   "version": "0.0.1",
-  "description": "A Generic Shorten URL Service",
-  "main": "index.js",
+  "description": "A Generic Shorten URL Service.",
+  "main": "lib/shorten.js",
   "scripts": {
     "test": "node_modules/.bin/mocha",
     "test-ci": "node_modules/.bin/istanbul cover node_modules/.bin/_mocha --report lcovonly -- --reporter spec --check-leaks test/"
