@@ -39,8 +39,9 @@ describe('Shorten', function() {
         should.not.exist(err);
         should.exist(doc.data);
         doc.code.should.have.length(6);
+        doc.hits.should.equals(0);
         should.not.Throw(function() {
-          Date.parse(doc.createdAt);          
+          Date.parse(doc.createdAt);
         });
         code = doc.code;
         done();
@@ -49,7 +50,7 @@ describe('Shorten', function() {
 
     it('should throw Exception if no object input.', function() {
       should.Throw(function() {
-        shorten.encode();  
+        shorten.encode();
       });
     });
   });
@@ -76,6 +77,34 @@ describe('Shorten', function() {
         }
         should.not.exist(doc);
         done();
+      });
+    });
+  });
+
+  describe('addHit', function() {
+    it('should decode and return db object', function(done) {
+      shorten.decode(code, function(err, doc) {
+        if (err) {
+          return done(err)
+        }
+
+        if (doc === null) {
+          return done('code is not exist.');
+        }
+        doc.should.be.a.instanceOf(Object);
+        shorten.addHit(code, function(err2, numReplaced) {
+          if (err2) {
+            throw err2;
+          }
+          numReplaced.should.be.equals(1);
+          shorten.decode(code, function(err3, doc2) {
+            if (err3) {
+              return done(err3)
+            }
+            doc2.hits.should.be.equals(1);
+            done();
+          });
+        });
       });
     });
   });
