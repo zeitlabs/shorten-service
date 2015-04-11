@@ -32,8 +32,10 @@ describe('Shorten', function() {
       }, function(err, doc) {
         // doc should look like this
         // { code: 'HNqQvf',
-        //   data: { type: 'url', value: 'http://eit.tw' },
+        //   type: 'url'
+        //   data: { value: 'http://eit.tw' },
         //   createdAt: '2015-04-05T08:14:47.761Z',
+        //   updatedAt: '2015-04-05T08:14:47.761Z',
         //   _id: 'Cq5j5vRAaK9OZHWD' }
 
         should.not.exist(err);
@@ -43,6 +45,7 @@ describe('Shorten', function() {
         doc.hits.should.equals(0);
         should.not.Throw(function() {
           Date.parse(doc.createdAt);
+          Date.parse(doc.updatedAt);
         });
         code = doc.code;
         done();
@@ -103,6 +106,7 @@ describe('Shorten', function() {
               return done(err3)
             }
             doc2.hits.should.be.equals(1);
+            doc2.createdAt.should.not.equals(doc2.updatedAt);
             done();
           });
         });
