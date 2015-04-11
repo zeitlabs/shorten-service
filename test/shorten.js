@@ -38,6 +38,7 @@ describe('Shorten', function() {
 
         should.not.exist(err);
         should.exist(doc.data);
+        doc.type.should.equals('url');
         doc.code.should.have.length(6);
         doc.hits.should.equals(0);
         should.not.Throw(function() {
