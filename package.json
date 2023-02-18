@@ -13,12 +13,12 @@
   "author": "YuLun Shih",
   "license": "MIT",
   "dependencies": {
-    "nedb": "^1.1.2",
-    "rndm": "^1.1.0"
+    "nedb": "^1.8.0",
+    "rndm": "^1.2.0"
   },
   "devDependencies": {
-    "chai": "^2.2.0",
-    "istanbul": "^0.3.13",
-    "mocha": "^2.2.1"
+    "chai": "^4.3.7",
+    "istanbul": "^0.4.5",
+    "mocha": "^10.2.0"
   }
 }
