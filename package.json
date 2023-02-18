@@ -1,6 +1,6 @@
 {
   "name": "shorten-service",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A Generic Shorten URL Service.",
   "main": "lib/shorten.js",
   "scripts": {
